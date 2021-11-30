@@ -1,0 +1,75 @@
+<html>
+<head>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+<form name="Mantenimiento" action="programa3.php" method="post">
+<table border="2">
+<tr ><td  colspan="4"><label>Registrar Alumno </label></td></tr>
+<tr>
+	<td><label>Nombre</label></td><td><input type="text" value="" maxlength="50" name="txtnombre" size="50"></td>
+	<td><label>Apellidos</label></td><td><input type="text" value="" maxlength="50" name="txtapellidos" maxlength="10" size="50"></td>
+</tr>
+<tr>
+	<td><label>Matricula</label></td><td><input type="text" value="" maxlength="50" name="txtmatricula" size="50"></td>
+	<td><label>Grupo</label></td><td><input type="text" value="" maxlength="50" size="50" name="txtgrupo"></td>
+</tr>
+<tr>
+    <td><label>Edad</label></td><td><input type="text" value="" maxlength="50" name="txtedad" size="50"></td>
+    <td><label>Clave</label></td><td><input type="text" value="" maxlength="50" name="txtclave" size="50"></td>
+</tr>
+<tr>
+    <td><label>Correo</label></td><td><input type="text" value="" maxlength="50" name="txtcorreo" size="50"></td>
+    <td><label>Comentarios</label></td><td><input type="text" value="" maxlength="50" name="txtcomentarios" size="50"></td>
+</tr>
+
+<tr><td colspan="4" align="center">
+<input type="submit" value="Nuevo" name="limpiardatos" >
+<input type="submit" value="Insertar" name="grabardatos" >
+<input type="submit" value="Modificar" name="modificardatos" >
+<input type="submit" value="Eliminar" name="eliminardatos">
+</td>
+</tr>
+
+<tr><td colspan="4"><label>Listado de Alumnos Registrados </label></td></tr>
+<table>
+<tr style="background-color:#28B463">
+    <td colspan="1"><label>Matricula</label></td>
+	<td colspan="1"><label>Nombre</label></td>
+	<td colspan="1"><label>Apellidos</label></td>
+	<td colspan="1"><label>Grupo</label></td>
+    <td colspan="1"><label>Edad</label></td>
+    <td colspan="1"><label>Correo</label></td>
+    <td colspan="1"><label>Clave</label></td>
+    <td colspan="1"><label>Comentarios</label></td>
+</tr>
+
+
+<?php 
+$sql="SELECT * FROM usuarios";
+$result=mysqli_query($conn,$sql);
+
+while($mostrar=mysqli_fetch_array($result))
+{
+?>
+<tr> <td><?php echo $mostrar['matricula'] ?>
+	<td><?php echo $mostrar['nombre'] ?>
+	<td><?php echo $mostrar['apellidos'] ?>
+	<td><?php echo $mostrar['grupo'] ?>
+    <td><?php echo $mostrar['edad'] ?>
+    <td><?php echo $mostrar['corre'] ?>
+    <td><?php echo $mostrar['pass'] ?>
+    <td><?php echo $mostrar['comentario'] ?>
+
+
+</tr>
+<?php
+}
+
+?>
+</table>
+</table>
+</form>
+</body>
+</html>
